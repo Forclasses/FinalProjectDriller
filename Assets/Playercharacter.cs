@@ -64,10 +64,10 @@ public class Playercharacter : MonoBehaviour
 
         if( go == lastTriggerGo ) return;
         lastTriggerGo = go;
-        Enemy enemy = go.GetComponent<Enemy>();
+        Rocks enemy = go.GetComponent<Rocks>();
         
         if(enemy != null){
-            
+            Driller.AddScore();
             Destroy(go);
         }
         else {

@@ -7,6 +7,8 @@ using UnityEngine.Scripting.APIUpdating;
 public class Rocks : MonoBehaviour
 {
     [Header("Inscribed")]
+
+    protected bool calledRockDestoryed = false;
    
     
     public float health = 10;
@@ -67,10 +69,14 @@ public class Rocks : MonoBehaviour
     {
         GameObject otherGO = coll.gameObject;
         Playercharacter p = otherGO.GetComponent<Playercharacter>();
-        if ( p != null ){
+        
             
-            health = health - 5;
-            if( health <= 0){     
+            health -= 5;
+            if( health <= 0){  
+                if(!calledRockDestoryed){
+                        calledRockDestoryed = true;
+                        Driller.ROCK_DESTORYED( this );
+                    }   
                 Destroy(this.gameObject);
             }
             
@@ -85,7 +91,7 @@ public class Rocks : MonoBehaviour
             //}
             
 
-        }
+        
     }
 }
 
