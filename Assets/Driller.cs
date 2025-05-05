@@ -25,6 +25,11 @@ public class Driller : MonoBehaviour
 
     [Header("Dynamic")]
     public static int Score;
+    public Button Restart1;
+
+    public Button Upgrade;
+
+    public Playercharacter speed;
 
  //   public WeaponDefinition[] weaponDefinitions;
 //    public eWeaponType[] powerUpFrequency = new eWeaponType[] {
@@ -42,6 +47,8 @@ public class Driller : MonoBehaviour
 
         bndCheck = GetComponent<BoundsCheck>();
         UpdateGUI();
+        Restart1.onClick.AddListener(restarting);
+        Upgrade.onClick.AddListener(Upgrader);
 
         //Invoke( nameof(SpawnEnemy), 1f/enemySpawnPerSecond );
         /*WEAP_DICT = new Dictionary<eWeaponType, WeaponDefinition>();
@@ -73,6 +80,17 @@ public class Driller : MonoBehaviour
         Invoke( nameof(SpawnEnemy), 1f/enemySpawnPerSecond );
     }*/
 
+    void restarting(){
+        Restart();
+    }
+
+    void Upgrader(){
+        if(Score >= 20){
+            Score -=20;
+            Playercharacter.speed += 2;
+        }
+    }
+
 
 
     void UpdateGUI() {
@@ -91,7 +109,7 @@ public class Driller : MonoBehaviour
     }
 
     void Restart() {
-        Score = 0;
+        //Score = 0;
         SceneManager.LoadScene( "__Scene_0" );
     }
 

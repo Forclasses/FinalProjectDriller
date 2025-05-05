@@ -12,7 +12,7 @@ public class Playercharacter : MonoBehaviour
     static public Playercharacter  S { get; private set; }
 
     [Header("Inscribed")]
-    public float speed = 10;
+    public static  float speed = 10;
     public float rollMult = -10;
     public float pitchMult = 10;
 
@@ -26,6 +26,7 @@ public class Playercharacter : MonoBehaviour
 
     void Awake()
     {
+        
         if(S == null) {
         S = this;
     } else {
